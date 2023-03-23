@@ -9,13 +9,13 @@ ref:
   build: GRCh38
 
 
-spike_in: False
+spike_in: True
 
 # If spike-in set to True, must fill in species, release, and build for spike-in
-spike:
+spike: 
   # Ensembl species name
-  species: 
+  species: drosophila_melanogaster
   # Ensembl release
-  release: 
+  release: 104
   # Genome build
-  build:
+  build: BDGP6
