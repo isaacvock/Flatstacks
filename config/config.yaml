@@ -1,2 +1,21 @@
 ######## Parameters you MUST set #########
 
+ref:
+  # Ensembl species name
+  species: homo_sapiens
+  # Ensembl release 
+  release: 108
+  # Genome build
+  build: GRCh38
+
+
+spike_in: False
+
+# If spike-in set to True, must fill in species, release, and build for spike-in
+spike:
+  # Ensembl species name
+  species: 
+  # Ensembl release
+  release: 
+  # Genome build
+  build:

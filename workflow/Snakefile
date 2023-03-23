@@ -25,11 +25,27 @@ report: "report/workflow.rst"
 container: "docker://continuumio/miniconda3"
 
 
+##### include rules #####
+include: "rules/ref.smk"
+include: "rules/spike.smk"
+include: "rules/flatten.smk"
+include: "rules/combine.smk"
+
+
 
 
 ##### target rules #####
 
-rule all:
-    input:
-        "results/cB/cB.csv.gz",
-        expand("results/tracks/{sample}.{mut}.{id}.{strand}.tdf", sample = get_samp_names(), mut=config["mut_tracks"], id=[0,1,2,3,4,5], strand = ['pos', 'min']) 
+if(config["spike_in"]):
+
+    rule all:
+        input:
+            "results/combined/combined_genome.gtf",
+            "results/combined/combined_genome.fa"
+
+else:
+
+    rule all:
+        input:
+            "results/flattened/flat_genome.gtf",
+            "results/annotation/genome.gtf"
