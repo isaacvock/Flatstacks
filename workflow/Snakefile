@@ -1,0 +1,35 @@
+from snakemake.utils import min_version
+
+##### set minimum snakemake version #####
+
+min_version("6.4.1")
+
+
+##### setup config and necessary parameters #####
+
+
+configfile: "config/config.yaml"
+
+
+##### setup report #####
+
+
+report: "report/workflow.rst"
+
+
+##### setup singularity #####
+
+
+# this container defines the underlying OS for each job when using the workflow
+# with --use-conda --use-singularity
+container: "docker://continuumio/miniconda3"
+
+
+
+
+##### target rules #####
+
+rule all:
+    input:
+        "results/cB/cB.csv.gz",
+        expand("results/tracks/{sample}.{mut}.{id}.{strand}.tdf", sample = get_samp_names(), mut=config["mut_tracks"], id=[0,1,2,3,4,5], strand = ['pos', 'min']) 
