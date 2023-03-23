@@ -16,6 +16,6 @@ spike:
   # Ensembl species name
   species: drosophila_melanogaster
   # Ensembl release
-  release: 104
+  release: 108
   # Genome build
   build: BDGP6
