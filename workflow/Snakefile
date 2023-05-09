@@ -48,4 +48,4 @@ else:
     rule all:
         input:
             "results/flattened/flat_genome.gtf",
-            "results/annotation/genome.fasta"
+            "results/genome/genome.fasta"
