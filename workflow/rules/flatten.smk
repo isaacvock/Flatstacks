@@ -15,7 +15,7 @@ rule add_exon:
     input:
         "results/raw_flattened/flat_genome.gtf",
     output:
-        "results/flattened/flat_genome_exonID.gtf,
+        "results/flattened/flat_genome_exonID.gtf",
     log:
         "logs/add_exon.log",
     conda:
