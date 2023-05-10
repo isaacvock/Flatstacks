@@ -22,6 +22,7 @@ rule add_exon:
         shellscript=workflow.source_path("../scripts/exon_ID.sh")
     conda:
         "../envs/add_exon.yaml",
+    threads: 1
     shell:
         """
         chmod +x {params.shellscript}
