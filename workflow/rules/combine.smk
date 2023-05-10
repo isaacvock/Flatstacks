@@ -1,7 +1,7 @@
 if(config["spike_in"]):
     rule combine_gtf:
         input:
-            ref="results/flattened/flat_genome.gtf",
+            ref="results/flattened/flat_genome_exonID.gtf",
             spike="results/annotation/spikein_genome.gtf"
         output:
             cref="results/combined/combined_genome.gtf"

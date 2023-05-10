@@ -47,5 +47,5 @@ else:
 
     rule all:
         input:
-            "results/flattened/flat_genome.gtf",
+            "results/flattened/flat_genome_exonID.gtf",
             "results/genome/genome.fasta"
