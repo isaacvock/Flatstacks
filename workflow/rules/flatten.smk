@@ -18,13 +18,13 @@ rule add_exon:
         "results/flattened/flat_genome_exonID.gtf",
     log:
         "logs/add_exon.log",
+    params:
+        shellscript=workflow.source_path("../scripts/exon_ID.sh")
     conda:
         "../envs/add_exon.yaml",
     shell:
         """
-        awk -v FS="\t" '$3 != "exonic_part" {{print $0}}
-                $3 == "exonic_part" {{split($9, atr, "\"") 
-                                        $0 = $0"; exon_id \"E" atr[2] atr[6] "\";"
-                                        print $0}}'  {input} >  {output}
+        chmod +x {params.shellscript}
+        {params.shellscript} {input} {output}
         """
         
