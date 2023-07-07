@@ -1,8 +1,8 @@
 if(config["spike_in"]):
     rule combine_gtf:
         input:
-            ref="results/flattened/flat_genome_exonID.gtf",
-            spike="results/annotation/spikein_genome.gtf"
+            ref="results/annotation/genome.gtf",
+            spike="results/annotation/spikein_genome_tagged.gtf"
         output:
             cref="results/combined/combined_genome.gtf"
         shell:
@@ -11,7 +11,7 @@ if(config["spike_in"]):
     rule combine_fasta:
         input:
             ref="results/genome/genome.fasta",
-            spike="results/genome/spikein_genome.fasta"
+            spike="results/genome/spikein_genome_tagged.fasta"
         output:
             cref="results/combined/combined_genome.fasta"
         shell:
