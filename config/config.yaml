@@ -20,8 +20,7 @@ spike:
   # Genome build
   build: BDGP6
 
-
+species_tag: "dm"
 
   ####### PARAMETERS YOU SHOULD CHECK ########
 
-  
