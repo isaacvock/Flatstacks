@@ -31,9 +31,9 @@ if(config["spike_in"]):
 
     rule tag_spike_genome:
         input: 
-            "results/annotation/spikein_genome.fasta",
+            "results/genome/spikein_genome.fasta",
         output:
-            "results/annotation/spikein_genome_tagged.fasta"
+            "results/genome/spikein_genome_chr.fasta"
         params:
             species=config["species_tag"],
         log:

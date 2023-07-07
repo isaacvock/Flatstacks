@@ -29,9 +29,9 @@ rule get_annotation:
 
 rule tag_genome:
     input: 
-        "results/annotation/genome.fasta",
+        "results/genome/genome.fasta",
     output:
-        "results/annotation/genome_tagged.fasta"
+        "results/genome/genome_chr.fasta"
     log:
         "logs/tag_genome/genome_tag.log",
     shell:
