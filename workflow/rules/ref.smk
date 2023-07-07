@@ -47,7 +47,7 @@ rule tag_annotation:
     output:
         real_o="results/annotation/genome_chr.gtf"
     log:
-        "logs/tag_annotation/gtf_tag.log",
+        "logs/tag_annotation/annotation_tag.log",
     shell:
         """
         awk -v OFS="\t" -v FS="\t" ' $1 !~ /^#/ {$1 = "chr"$1}

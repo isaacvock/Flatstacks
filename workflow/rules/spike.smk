@@ -37,7 +37,7 @@ if(config["spike_in"]):
         params:
             species=config["species_tag"],
         log:
-            "logs/tag_spike_genome/spikein_tag.log",
+            "logs/tag_spike_genome/spikein_genome_tag.log",
         shell:
             """
             awk '$1 ~ /^>/ { split($1, h, ">") 
@@ -54,7 +54,7 @@ if(config["spike_in"]):
         params:
             species=config["species_tag"],
         log:
-            "logs/tag_spike_annotation/spikein_tag.log",
+            "logs/tag_spike_annotation/spikein_annotation_tag.log",
         shell:
             """
             awk -v OFS="\t" -v FS="\t" ' $1 !~ /^#/ {$1 = "chr"$1"_{{params.species}}"}
