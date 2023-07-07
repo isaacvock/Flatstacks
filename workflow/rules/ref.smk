@@ -34,11 +34,13 @@ rule tag_genome:
         "results/genome/genome_chr.fasta"
     log:
         "logs/tag_genome/genome_tag.log",
+    params:
+        shellscript=workflow.source_path("../scripts/tag_genome.sh")
+    threads: 1
     shell:
         """
-        awk '$1 ~ /^>/ { split($1, h, ">") 
-                    print ">chr"h[2]}
-                $1 !~ /^>/ { print $0}' {input} > {output}
+        chmod +x {params.shellscript}
+        {params.shellscript} {input} {output}
         """
 
 rule tag_annotation:
@@ -48,9 +50,11 @@ rule tag_annotation:
         real_o="results/annotation/genome_chr.gtf"
     log:
         "logs/tag_annotation/annotation_tag.log",
+    params:
+        shellscript=workflow.source_path("../scripts/tag_gtf.sh")
+    threads: 1
     shell:
         """
-        awk -v OFS="\t" -v FS="\t" ' $1 !~ /^#/ {$1 = "chr"$1}
-            {print $0}' {input} > {output.real_o}
-
+        chmod +x {params.shellscript}
+        {params.shellscript} {input} {output.real_o}
         """

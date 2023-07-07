@@ -36,13 +36,14 @@ if(config["spike_in"]):
             "results/genome/spikein_genome_chr.fasta"
         params:
             species=config["species_tag"],
+            shellscript=workflow.source_path("../scripts/tag_genome_spike.sh")
         log:
             "logs/tag_spike_genome/spikein_genome_tag.log",
+        threads: 1
         shell:
             """
-            awk '$1 ~ /^>/ { split($1, h, ">") 
-                     print ">chr"h[2]"_{{params.species}}"}
-                 $1 !~ /^>/ { print $0}' {input} > {output}
+            chmod +x {params.shellscript}
+            {params.shellscript} {input} {output} {params.species}
             """
 
     rule tag_spike_annotation:
@@ -53,12 +54,12 @@ if(config["spike_in"]):
             real_o="results/annotation/spikein_genome_chr.gtf"
         params:
             species=config["species_tag"],
+            shellscript=workflow.source_path("../scripts/tag_gtf_spike.sh")
         log:
             "logs/tag_spike_annotation/spikein_annotation_tag.log",
+        threads: 1
         shell:
             """
-            awk -v OFS="\t" -v FS="\t" ' $1 !~ /^#/ {$1 = "chr"$1"_{{params.species}}"}
-                {print $0}' {input} > {output.temp_o}
-
-            sed -r 's/(gene_name ")([^"]*)/\1\2_{{params.species}}/g' {output.temp_o} > {output.real_o}
+            chmod +x {params.shellscript}
+            {params.shellscript} {input} {output.temp_o} {output.real_o} {params.species}
             """
