@@ -41,6 +41,7 @@ if(config["spike_in"]):
     rule all:
         input:
             "results/combined/combined_genome.gtf",
+            "results/flattened/flat_genome_exonID.gtf",
             "results/combined/combined_genome.fasta"
 
 else:
