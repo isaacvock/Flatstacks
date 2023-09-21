@@ -6,6 +6,9 @@ import glob
 # and to expand list of bam files
 SAMP_NAMES = list(config['samples'].keys())
 
+# Features to quantify
+FEATURE_NAMES = ['total', 'exonbin', 'exonic']
+
 
 # Retrieve input bam files for first steps
 def get_input_bams(wildcards):
@@ -21,7 +24,7 @@ def get_target_input():
 
         target.append(str(config["annotation"]))
 
-    
+    target.append(expand("results/quantify/{SID}_{feature}.csv", SID = SAMP_NAMES, feature = FEATURE_NAMES))
 
 # Determining output file names for downloaded references
 if config["download"]:
