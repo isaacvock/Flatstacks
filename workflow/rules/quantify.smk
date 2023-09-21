@@ -27,7 +27,7 @@ rule quantify_total:
     threads: 1
     shell:
         """
-        htseq-count -t exonic_part -m union -s {params.strand} \
+        htseq-count -t aggregate_gene -m intersection-strict -s {params.strand} \
         -r pos -p bam --add-chromosome-info -i gene_id \
         -c {output.counts} {input.bam} {input.gtf}
         """
