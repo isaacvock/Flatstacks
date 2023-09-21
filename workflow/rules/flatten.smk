@@ -1,6 +1,6 @@
 rule flatten:
     input:
-        gtf="results/annotation/genome_chr.gtf"
+        gtf=config["annotation"]
     output:
         flatgtf="results/raw_flattened/flat_genome.gtf",
     log:

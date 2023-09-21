@@ -26,27 +26,26 @@ container: "docker://continuumio/miniconda3"
 
 
 ##### include rules #####
-include: "rules/ref.smk"
-include: "rules/spike.smk"
+
+
+if config["download"]:
+
+    include: "rules/ref.smk"
+
+if config["spike_in"]:
+
+    include: "rules/spike.smk"
+    include: "rules/combine.smk"
+
+
 include: "rules/flatten.smk"
-include: "rules/combine.smk"
+include: "rules/quantify.smk"
 
 
 
 
 ##### target rules #####
 
-if(config["spike_in"]):
-
-    rule all:
-        input:
-            "results/combined/combined_genome_chr.gtf",
-            "results/flattened/flat_genome_exonID.gtf",
-            "results/combined/combined_genome_chr.fasta"
-
-else:
-
-    rule all:
-        input:
-            "results/flattened/flat_genome_exonID.gtf",
-            "results/genome/genome_chr.fasta"
+rule all:
+    input:
+        get_target_input()

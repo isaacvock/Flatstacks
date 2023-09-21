@@ -1,5 +1,35 @@
 ######## Parameters you MUST set #########
 
+# Path to bam files
+samples:
+  Rep_1: data/bam/WT_replicate_1.bam
+  Rep_2: data/bam/WT_replicate_2.bam
+  Rep_3: data/bam/WT_replicate_3.bam
+
+# Path to gtf
+  # Name given to final downloaded and chr tagged reference
+  # if not already present
+annotation: data/annotations/genome.gtf
+
+# Path to flattened gtf
+  # Will get created if not already present
+flat_gtf: data/annotations/genome_flat.gtf
+
+
+# Strandedness
+  # set to "reverse", "yes", or "no"
+  # reverse means that read 2 represents 5' to 3' sequence of original RNA (read 1 thus represents its reverse complement)
+  # yes means that read 1 represents 5' to 3' sequence of original RNA
+  # no means unstranded
+  # Used by HTSeq (see https://htseq.readthedocs.io/en/master/htseqcount.html for details)
+strandedness: "reverse"
+
+# Download reference from ensembl?
+download: False
+
+
+### Reference download information (only relevant if download == True)
+
 ref:
   # Ensembl species name
   species: homo_sapiens
@@ -7,7 +37,6 @@ ref:
   release: 108
   # Genome build
   build: GRCh38
-
 
 spike_in: True
 
@@ -22,5 +51,9 @@ spike:
 
 species_tag: "dm"
 
-  ####### PARAMETERS YOU SHOULD CHECK ########
+
+####### OPTIONAL PARAMETERS FOR TOOLS USED #######
+
+# Optional parameters to pass to samtools sort
+samtools_params: ""
 

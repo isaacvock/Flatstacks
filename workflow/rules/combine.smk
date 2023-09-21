@@ -4,7 +4,7 @@ if(config["spike_in"]):
             ref="results/annotation/genome_chr.gtf",
             spike="results/annotation/spikein_genome_chr.gtf"
         output:
-            cref="results/combined/combined_genome_chr.gtf"
+            cref=config["annotation"]
         shell:
             "cat {input.ref} {input.spike} > {output.cref}"
 

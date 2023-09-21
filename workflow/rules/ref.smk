@@ -47,7 +47,7 @@ rule tag_annotation:
     input: 
         "results/annotation/genome.gtf",
     output:
-        real_o="results/annotation/genome_chr.gtf"
+        real_o=MAIN_GTF_NAME
     log:
         "logs/tag_annotation/annotation_tag.log",
     params:
