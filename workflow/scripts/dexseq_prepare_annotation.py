@@ -86,7 +86,7 @@ for iv, s in exons.steps( ):
    # form the aggregate ID from all of them   
    else:
       assert set( gene_id for gene_id, transcript_id in s ) <= gene_sets[ gene_id ] 
-      aggregate_id = '+'.join( gene_sets[ gene_id ] )
+      aggregate_id = '+'.join( sorted(gene_sets[ gene_id ] ) )
    # Make the feature and store it in 'aggregates'
    f = HTSeq.GenomicFeature( aggregate_id, "exonic_part", iv )   
    f.source = os.path.basename( sys.argv[0] )
@@ -94,7 +94,7 @@ for iv, s in exons.steps( ):
    f.attr = {}
    f.attr[ 'gene_id' ] = aggregate_id
    transcript_set = set( ( transcript_id for gene_id, transcript_id in s ) )
-   f.attr[ 'transcripts' ] = '+'.join( transcript_set )
+   f.attr[ 'transcripts' ] = '+'.join( sorted(transcript_set) )
    aggregates[ aggregate_id ].append( f )
 
 
