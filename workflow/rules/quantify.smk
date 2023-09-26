@@ -15,7 +15,7 @@ rule sort:
 rule quantify_total:
     input:
         bam="results/sort/sorted_{sample}.bam",
-        gtf="results/raw_flattened/flat_genome.gtf"
+        gtf="results/flattened/flat_genome_exonID.gtf"
     output:
         counts="results/quantify/{sample}_total.csv",
     params:
@@ -36,7 +36,7 @@ rule quantify_total:
 rule quantify_exonbin:
     input:
         bam="results/sort/sorted_{sample}.bam",
-        gtf="results/raw_flattened/flat_genome.gtf"
+        gtf="results/flattened/flat_genome_exonID.gtf"
     output:
         counts="results/quantify/{sample}_exonbin.csv",
     params:
@@ -56,7 +56,7 @@ rule quantify_exonbin:
 rule quantify_exonic:
     input:
         bam="results/sort/sorted_{sample}.bam",
-        gtf="results/raw_flattened/flat_genome.gtf"
+        gtf="results/flattened/flat_genome_exonID.gtf"
     output:
         counts="results/quantify/{sample}_exonic.csv",
     params:
