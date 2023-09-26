@@ -19,7 +19,7 @@ def get_target_input():
 
         target.append(str(config["annotation"]))
 
-    target.append(expand("results/quantify/{SID}_{feature}.csv", SID = SAMP_NAMES, feature = FEATURE_NAMES))
+    target + expand("results/quantify/{SID}_{feature}.csv", SID = SAMP_NAMES, feature = FEATURE_NAMES)
 
 # Determining output file names for downloaded references
 if config["download"]:
