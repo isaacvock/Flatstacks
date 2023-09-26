@@ -1,8 +1,3 @@
-# Retrieve input bam files for first steps
-def get_input_bams(wildcards):
-    return config["samples"][wildcards.sample]
-
-
 rule sort:
     input:
         get_input_bams
