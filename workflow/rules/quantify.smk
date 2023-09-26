@@ -2,7 +2,7 @@ rule sort:
     input:
         get_input_bams,
     output:
-        temp("results/sort/sorted_{sample}.bam")
+        "results/sort/sorted_{sample}.bam"
     log:
         "logs/sorted/{sample}.log"
     threads: 8
