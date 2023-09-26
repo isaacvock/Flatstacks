@@ -10,11 +10,6 @@ SAMP_NAMES = list(config['samples'].keys())
 FEATURE_NAMES = ['total', 'exonbin', 'exonic']
 
 
-# Retrieve input bam files for first steps
-def get_input_bams(wildcards):
-    return config["samples"][wildcards.sample]
-
-
 # Target rule (so final output to be looked for)
 def get_target_input():
 
