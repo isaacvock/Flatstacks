@@ -21,9 +21,11 @@ def get_target_input():
 
     if config["download"]:
 
-        target.append(str(config["annotation"]))
+        target = target + str(config["annotation"]))
 
-    target + expand("results/quantify/{SID}_{feature}.csv", SID = SAMP_NAMES, feature = FEATURE_NAMES)
+    target = target + expand("results/quantify/{SID}_{feature}.csv", SID = SAMP_NAMES, feature = FEATURE_NAMES)
+
+    return target
 
 # Determining output file names for downloaded references
 if config["download"]:
