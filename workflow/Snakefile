@@ -28,6 +28,10 @@ container: "docker://continuumio/miniconda3"
 ##### include rules #####
 
 
+include: "rules/flatten.smk"
+include: "rules/quantify.smk"
+include: "rules/common.smk"
+
 if config["download"]:
 
     include: "rules/ref.smk"
@@ -36,11 +40,6 @@ if config["spike_in"]:
 
     include: "rules/spike.smk"
     include: "rules/combine.smk"
-
-
-include: "rules/flatten.smk"
-include: "rules/quantify.smk"
-include: "rules/common.smk"
 
 
 
