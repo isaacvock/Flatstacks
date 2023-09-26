@@ -27,10 +27,9 @@ container: "docker://continuumio/miniconda3"
 
 ##### include rules #####
 
-
+include: "rules/common.smk"
 include: "rules/flatten.smk"
 include: "rules/quantify.smk"
-include: "rules/common.smk"
 
 if config["download"]:
 
