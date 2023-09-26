@@ -1,5 +1,5 @@
 test_list = []
-test_add = ['C', 'D']
+SAMPLES = ['A', 'B', 'C']
+test_add = [str(sample) for sample in SAMPLES]
 
-test_list + test_add
-
+test_list + [str(sample) for sample in SAMPLES]
