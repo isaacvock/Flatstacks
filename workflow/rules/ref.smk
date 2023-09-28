@@ -2,7 +2,7 @@ rule get_genome:
     output:
         "results/genome/genome.fasta",
     log:
-        "logs/get_genome.log",
+        "logs/get_genome/get_genome.log",
     params:
         species=config["ref"]["species"],
         datatype="dna",
@@ -22,7 +22,7 @@ rule get_annotation:
         release=config["ref"]["release"],
         flavor="",
     log:
-        "logs/get_annotation.log",
+        "logs/get_annotation/get_annotation.log",
     wrapper:
         "v1.21.4/bio/reference/ensembl-annotation"
 

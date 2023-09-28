@@ -4,7 +4,7 @@ if(config["spike_in"]):
         output:
             "results/genome/spikein_genome.fasta",
         log:
-            "logs/spikein_genome.log",
+            "logs/spikein_genome/spikein_genome.log",
         params:
             species=config["spike"]["species"],
             datatype="dna",
@@ -24,7 +24,7 @@ if(config["spike_in"]):
             release=config["spike"]["release"],
             flavor="",
         log:
-            "logs/spikein_annotation.log",
+            "logs/spikein_annotation/spikein_annotation.log",
         wrapper:
             "v1.21.4/bio/reference/ensembl-annotation"
 

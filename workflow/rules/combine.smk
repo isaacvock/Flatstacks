@@ -5,8 +5,10 @@ if(config["spike_in"]):
             spike="results/annotation/spikein_genome_chr.gtf"
         output:
             cref=config["annotation"]
+        log:
+            "logs/combine_gtf/combine_gtf.log"
         shell:
-            "cat {input.ref} {input.spike} > {output.cref}"
+            "cat {input.ref} {input.spike} > {output.cref} 2> {log}"
 
     rule combine_fasta:
         input:
@@ -14,5 +16,7 @@ if(config["spike_in"]):
             spike="results/genome/spikein_genome_chr.fasta"
         output:
             cref="results/combined/combined_genome_chr.fasta"
+        log:
+            "logs/combine_fasta/combine_fasta.log"
         shell:
-            "cat {input.ref} {input.spike} > {output.cref}"
+            "cat {input.ref} {input.spike} > {output.cref} 2> {log}"

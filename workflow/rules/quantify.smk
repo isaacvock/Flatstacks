@@ -29,7 +29,7 @@ rule quantify_total:
         """
         htseq-count -t aggregate_gene -m intersection-strict -s {params.strand} \
         -r pos -p bam --add-chromosome-info -i gene_id --nonunique=all \
-        -c {output.counts} {input.bam} {input.gtf}
+        -c {output.counts} {input.bam} {input.gtf} 1> {log} 2>&1
         """
 
 
@@ -50,7 +50,7 @@ rule quantify_exonbin:
         """
         htseq-count -t exonic_part -m union -s {params.strand} \
         -r pos -p bam --add-chromosome-info -i exon_id --nonunique=all \
-        -c {output.counts} {input.bam} {input.gtf}
+        -c {output.counts} {input.bam} {input.gtf} 1> {log} 2>&1
         """
 
 rule quantify_exonic:
@@ -70,5 +70,5 @@ rule quantify_exonic:
         """
         htseq-count -t exonic_part -m intersection-strict -s {params.strand} \
         -r pos -p bam --add-chromosome-info -i gene_id --nonunique=all \
-        -c {output.counts} {input.bam} {input.gtf}
+        -c {output.counts} {input.bam} {input.gtf} 1> {log} 2>&1
         """
